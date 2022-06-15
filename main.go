@@ -18,6 +18,12 @@ func main() {
 	http.HandleFunc("/app.js", func(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile("web/app.js")
 	})
+	http.HandleFunc("/scripts", func(w http.ResponseWriter, r *http.Request) {
+		http.FileServer(http.Dir("scripts/")
+	})
+	http.HandleFunc("/robots.txt", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile("scripts/robots.txt") // Basic privacy for scripts
+	})
 
 	// API endpoints
 	http.Handle("/storescript", scriptStore)
