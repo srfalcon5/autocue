@@ -8,3 +8,6 @@ function handleMarquee() {
 	const content = marquee.querySelector(".inner > p");
 }
 
+// TODO: upload with buttom press
+// TODO: file checks locally (see privacy.html)
+// TODO: push to server, await return for rewrite and hash
