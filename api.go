@@ -78,7 +78,7 @@ func nameGen() (string, error) {
 	// Get first three entries of shuffled array
 	gen := words[0] + words[1] + words[2]
 	
-	name = string(gen) + ".txt"
+	name = strings.join("./scripts/", string(gen), ".txt")
 	
 	return name, nil
 }
