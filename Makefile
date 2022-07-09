@@ -1,4 +1,4 @@
-GOCMD= /opt/homebrew/bin/GOCMD
+GOCMD= /opt/homebrew/bin/go
 
 build:
 	$(GOCMD) build -o server
