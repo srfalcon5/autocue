@@ -7,6 +7,8 @@ import (
 	"log"
 	"io/ioutil"
 	"math/rand"
+	"net/http"
+	"os"
 	"path"
 	"regexp"
 	"strings"
@@ -28,7 +30,7 @@ func scriptStore(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		fmt.Fprintf(w, "Something went wrong while pushing to server. Report the error below at https://github.com/doamatto/falcon5-teleprompter/issues/new")
-		fmt.Frptinf(w, err)
+		fmt.Fprintf(w, err)
 		return
 	}
 	fname := strings.join(fname)
