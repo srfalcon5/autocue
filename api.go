@@ -36,14 +36,14 @@ func scriptStore(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		fmt.Fprintf(w, "Something went wrong while saving the your script. Report the error below at https://github.com/doamatto/falcon5-teleprompter/issues/new")
-		fmt.Fprintf(w, err)
+		fmt.Fprintf(w, "%v", err)
 		return
 	}
 	defer f.Close()
 	if err := os.WriteFile(fname, []byte(script), 0666); err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		fmt.Fprintf(w, "Something went wrong while saving the your script. Report the error below at https://github.com/doamatto/falcon5-teleprompter/issues/new")
-		fmt.Fprintf(w, err)
+		fmt.Fprintf(w, "%v", err)
 		return
 	}
 
