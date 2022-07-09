@@ -4,44 +4,50 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Teleprompter</title>
-		<link rel="stylesheet" href="/app.css" />
-		<script src="/app.js"></script>
+		<link rel="stylesheet" href="app.css" />
+		<script src="app.js"></script>
 	</head>
 	<body>
 		<main id="marquee">
 			<div>
-				<p contenteditable="true">
+				<p id="marquee" contenteditable="true">
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 				</p>
 			</div>
 		</main>
 		<footer>
 			<div id="controls">
-				<div id="speed">
-					<p>Slow</p>
-					<p>Medium</p>
-					<p>Fast</p>
-					<p>Custom...</p>
-				</div>
-				<div id="size">
-					<p>Small</p>
-					<p>Medium</p>
-					<p>Large</p>
-					<p>Custom...</p>
-				</div>
-				<div id="align">
-					<p>Left</p>
-					<p>Centre</p>
-					<p>Right</p>
-				</div>
-				<div id="mirror">
-					<p>Normal</p>
-					<p>Mirror</p>
-				</div>
+				<label for="speed">Speed</label>
+				<select name="speed" id="speed">
+					<option name="slow">Slow</option>
+					<option name="medium" selected>Normal</option>
+					<option name="fast">Fast</option>
+				</select>
+
+				<label for="size">Size</label>
+				<select name="size" id="size">
+					<option name="small">Small</option>
+					<option name="medium" selected>Normal</option>
+					<option name="large">Large</option>
+				</select>
+
+				<label for="align">Align</label>
+				<select name="align" id="align">
+					<option name="left" selected>Left</option>
+					<option name="centre">Centre</option>
+					<option name="right">Right</option>
+				</select>
+
+				<label for="mirror">Mirror</label>
+				<select name="mirror" id="mirror">
+					<option name="original" selected>Original</option>
+					<option name="mirror">Mirror</option>
+				</select>
+				<button id="toggle">Start/Stop</button>
 			</div>
 			<div>
 				<button id="pushtoserver">Push script to server</button>
-				<sup><a href="/privacy">?</a></sup>
+				<a href="/privacy">Privacy.</a>
 			</div>
 		</footer>
 	</body>

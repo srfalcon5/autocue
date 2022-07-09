@@ -1,0 +1,41 @@
+html,
+body {
+	background: #000;
+	color: #fff;
+	font-family: sans-serif;
+}
+a {
+	color: #fff;
+}
+a:hover { color: #FC3; }
+
+#marquee {
+	font-size: 3rem;
+	overflow-y: auto;
+	font-family: serif;
+}
+
+#privacy { font-size: 18px; }
+#privacy,
+header,
+footer {
+	margin: 0 auto;
+	max-width: 85%;
+}
+
+footer {
+	margin-top: 1rem;
+	border-top: 1px white solid;
+	opacity: .8;
+}
+
+button {
+	padding: .1rem .5rem;
+	border-radius: 6px;
+	background: #18975E;
+	font-size: 1.2rem;
+	border: 2px solid white;
+	font-weight: 700;
+	display: inline-block;
+}
+button:hover { background: rgba(24, 151, 94, .8); }
