@@ -30,7 +30,7 @@ func scriptStore(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		fmt.Fprintf(w, "Something went wrong while pushing to server. Report the error below at https://github.com/doamatto/falcon5-teleprompter/issues/new")
-		fmt.Fprintf(w, err)
+		fmt.Printf(w, err)
 		return
 	}
 	fname := strings.join(fname)
@@ -80,7 +80,7 @@ func nameGen() (string, error) {
 	// Get first three entries of shuffled array
 	gen := words[0] + words[1] + words[2]
 	
-	name = strings.join("./scripts/", string(gen), ".txt")
+	name = strings.Join("./scripts/", string(gen), ".txt")
 	
 	return name, nil
 }
