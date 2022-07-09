@@ -4,13 +4,11 @@ import (
 	"errors"
 	"encoding/json"
 	"fmt"
-	"log"
 	"io/ioutil"
 	"math/rand"
 	"net/http"
 	"os"
 	"path"
-	"regexp"
 	"strings"
 	"time"
 )
@@ -30,7 +28,7 @@ func scriptStore(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		fmt.Fprintf(w, "Something went wrong while pushing to server. Report the error below at https://github.com/doamatto/falcon5-teleprompter/issues/new")
-		fmt.Printf(w, err)
+		fmt.FPrintf(w, "%v", err)
 		return
 	}
 	fname := strings.join(fname)
@@ -54,7 +52,7 @@ func scriptStore(w http.ResponseWriter, r *http.Request) {
 	hash := fname[0:len(fname)-len(ext)]
 	// Return 200 with the hash for the client to finish the push
 	w.Write(hash)
-	w.Header.Add("Prompter-Hash", hash)
+	w.Header().Add("Prompter-Hash", hash)
 	w.WriteHeader(200)
 }
 
