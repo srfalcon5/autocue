@@ -28,7 +28,7 @@ func scriptStore(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 		fmt.Fprintf(w, "Something went wrong while pushing to server. Report the error below at https://github.com/doamatto/falcon5-teleprompter/issues/new")
-		fmt.FPrintf(w, "%v", err)
+		fmt.Fprintf(w, "%v", err)
 		return
 	}
 	// fname = strings.Join(fname, ".txt") // not sure what this line was for
