@@ -51,7 +51,6 @@ func scriptStore(w http.ResponseWriter, r *http.Request) {
 	ext := path.Ext(fname)
 	hash := fname[0:len(fname)-len(ext)]
 	// Return 200 with the hash for the client to finish the push
-	w.Write(hash)
 	w.Header().Add("Prompter-Hash", hash)
 	w.WriteHeader(200)
 }
