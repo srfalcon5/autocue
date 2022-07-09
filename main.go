@@ -27,7 +27,9 @@ func main() {
 	})
 
 	// API endpoints
-	http.Handle("/storescript", scriptStore)
+	http.HandleFunc("/storescript", func(w http.ResponseWriter, r *http.Request) {
+		scriptStore(w, r)
+	})
 
 	log.Fatal(http.ListenAndServe(":2023", nil))
 }
