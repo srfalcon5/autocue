@@ -80,7 +80,7 @@ func nameGen() (string, error) {
 	// Get first three entries of shuffled array
 	gen := words[0] + words[1] + words[2]
 	
-	name = strings.Join("./scripts/", string(gen), ".txt")
+	name := strings.Join("./scripts/", string(gen), ".txt")
 	
 	return name, nil
 }
