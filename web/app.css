@@ -11,9 +11,12 @@ a:hover { color: #FC3; }
 
 #marquee {
 	font-size: 3rem;
-	overflow-y: auto;
+	overflow-y: scroll;
+	/*overflow-y: auto;*/
+	max-height: 10rem;
 	font-family: serif;
 }
+#marquee:focus { outline: none; }
 
 #privacy { font-size: 18px; }
 #privacy,

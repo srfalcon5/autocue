@@ -5,15 +5,14 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Teleprompter</title>
 		<link rel="stylesheet" href="app.css" />
-		<script src="app.js"></script>
+		<script async defer src="app.js"></script>
 	</head>
 	<body>
 		<main id="marquee">
-			<div>
-				<p id="marquee" contenteditable="true">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-				</p>
-			</div>
+			<p contenteditable="true">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+			</p>
+			<p>END</p>
 		</main>
 		<footer>
 			<div id="controls">
@@ -46,7 +45,7 @@
 				<button id="toggle">Start/Stop</button>
 			</div>
 			<div>
-				<button id="pushtoserver">Push script to server</button>
+				<!--<button id="pushtoserver">Push script to server</button>-->
 				<a href="/privacy">Privacy.</a>
 			</div>
 		</footer>
