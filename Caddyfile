@@ -10,7 +10,7 @@ cue.f5.maatt.fr {
 	header Cache-Control "max-age=31536000"
 
 	root * /srv/apps/caddy/sites/cue.f5.maatt.fr/web
-	file_browser {
+	file_server {
 		precompressed br
 	}
 }
