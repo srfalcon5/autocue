@@ -4,6 +4,7 @@ cue.f5.maatt.fr {
 	header X-Content-Type-Options "nosniff"
 	header X-Frame-Options "DENY"
 	header Referrer-Policy "no-referrer"
+	header Server "maatt DOT fr"
 	header Strict-Transport-Security "max-age=31536000;includeSubDomains;preload"
 	header Vary "Origin"
 	header Expect-CT "max-age=86400, enforce"
