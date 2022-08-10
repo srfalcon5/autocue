@@ -1,5 +1,14 @@
 cue.f5.maatt.fr {
 	encode zstd gzip
+	header Permissions-Policy "interest-cohort=(), browsing-topics=(), join-ad-interest-group=(), run-ad-auction=()"
+	header X-Content-Type-Options "nosniff"
+	header X-Frame-Options "DENY"
+	header Referrer-Policy "no-referrer"
+	header Strict-Transport-Security "max-age=31536000;includeSubDomains;preload"
+	header Vary "Origin"
+	header Expect-CT "max-age=86400, enforce"
+	header Cache-Control "max-age=31536000"
+
 	root * /srv/apps/caddy/sites/cue.f5.maatt.fr/web
 	file_browser {
 		precompressed br
