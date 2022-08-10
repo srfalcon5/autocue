@@ -9,7 +9,10 @@ cue.f5.maatt.fr {
 	header Expect-CT "max-age=86400, enforce"
 	header Cache-Control "max-age=31536000"
 
+	# Replace with reverse proxy when Go app is ready
 	root * /srv/apps/caddy/sites/cue.f5.maatt.fr/web
+	redir / /prompter.html 302
+	redir /privacy /privacy.html 302
 	file_server {
 		precompressed br
 	}
