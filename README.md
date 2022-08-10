@@ -6,10 +6,5 @@
 2. Build the code (`go build -o server .`)
 3. Run the compiled server file (`./server`)
 
-## Deploying
-0. Install [Docker](https://docker.com) or a compatible engine
-1. Build the image for Docker (`docker build -t f5-autocue .`)
-2. Run the built image (`docker run -d f5-autocue`)
-
 ## Acknoledgements
 Created by [Matt Ronchetto](https://maatt.fr) and [Daniel Calderon](https://daniel.cafe) for the class of 2023 and beyond.
