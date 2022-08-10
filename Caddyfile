@@ -1,0 +1,7 @@
+cue.f5.maatt.fr {
+	encode zstd gzip
+	root * /srv/apps/caddy/sites/cue.f5.maatt.fr/web
+	file_browser {
+		precompressed br
+	}
+}
