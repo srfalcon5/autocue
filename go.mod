@@ -1,3 +1,3 @@
-module github.com/doamatto/falcon5-prompter
+module github.com/doamatto/f5-autocue
 
 go 1.18
