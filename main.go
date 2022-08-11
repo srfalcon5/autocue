@@ -25,6 +25,15 @@ func main() {
 	http.HandleFunc("/robots.txt", func(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile(w, r, "web/robots.txt") // Basic privacy for scripts
 	})
+	http.HandleFunc("/index.html.br", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "web/index.html.br")
+	})
+	http.HandleFunc("/privacy.html.br", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "web/privacy.html.br")
+	})
+	http.HandleFunc("/app.css.br", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "web/app.css.br")
+	})
 
 	// API endpoints
 	// TODO: rewrite storage script
