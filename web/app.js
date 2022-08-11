@@ -22,7 +22,7 @@ let speed = speeds[1];
 let scroller = setInterval(marquee, speed);
 
 function marquee() {
-	if(play == true) {
+	if(!play) {
 		curScroll = obj.scrollTop;
 		if (curScroll + obj.clientHeight == document.clientHeight) {
 			obj.scrollTo(0, 0);
