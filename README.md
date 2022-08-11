@@ -8,3 +8,5 @@
 
 ## Acknoledgements
 Created by [Matt Ronchetto](https://maatt.fr) and [Daniel Calderon](https://daniel.cafe) for the class of 2023 and beyond.
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=f5-autocue&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=f5-autocue)

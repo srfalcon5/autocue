@@ -1,6 +1,6 @@
 'use strict';
 
-// Configuration
+// Configuration //
 const speeds = [
 	"256", // slow
 	"128", // normal
@@ -9,82 +9,60 @@ const speeds = [
 const fontSizes = [
 	"1rem", // small
 	"3rem", // normal
-	"5rem" // large
+	"5rem", // large
 ];
-const align = [
-	"left",
-	"center",
-	"right"
-];
+const align = ["left", "center", "right"];
 
 // // // // //
 
+const obj = document.getElementById("marquee");
 let play = false;
 let curScroll = 0;
 let speed = speeds[1];
-console.log("built scroller")
 let scroller = setInterval(marquee, speed);
 
 function marquee() {
-	if(play == true) {
-		const obj = document.getElementById("marquee");
+	if(play) {
 		curScroll = obj.scrollTop;
 		if (curScroll + obj.clientHeight == document.clientHeight) {
-			console.log("0 0");
 			obj.scrollTo(0, 0);
 		} else {
 			obj.scrollTo({
 				top: curScroll + 5,
-				behavior: "smooth"
+				behavior: "smooth",
 			});
 		}
 	}
 }
 
-// Handle scrolling start and stop
 document.getElementById("toggle").addEventListener("click", () => {
 	play = !play;
-	if (play) {
-		console.log("scrolling");
-	} else {
-		console.log("not scrolling");
-	}
-	return false;
-}, false);
+}, false); // Handle scrolling start and stop
 
-// Handle speed changes
 document.getElementById("speed").addEventListener("change", () => {
-	const index = document.getElementById("speed").selectedIndex;
-	speed = speeds[index];
-	console.log("destroy scroller")
+	const i = document.getElementById("speed").selectedIndex;
+	speed = speeds[i];
+	console.log("destroy scroller");
 	clearInterval(scroller);
 	scroller = setInterval(marquee, speed);
-	console.log("built scroller")
-	return false;
-}, false);
+	console.log("built scroller");
+}, false); // Handle speed changes
 
-// Handle text size changes
 document.getElementById("size").addEventListener("change", () => {
-	const index = document.getElementById("size").selectedIndex;
-	document.getElementById('marquee').style.fontSize = fontSizes[index];
-	return false;
-}, false);
+	const i = document.getElementById("size").selectedIndex;
+	obj.style.fontSize = fontSizes[i];
+}, false); // Handle text size changes
 
-// Handle alignment changes
 document.getElementById("align").addEventListener("change", () => {
-	const index = document.getElementById("align").selectedIndex;
-	document.getElementById("marquee").style.textAlign = align[index];
-	return false;
-}, false);
+	const i = document.getElementById("align").selectedIndex;
+	obj.style.textAlign = align[i];
+}, false); // Handle alignment changes
 
-// Handle mirror changes
 document.getElementById("mirror").addEventListener("change", () => {
-	const index = document.getElementById("mirror").selectedIndex;
-	const obj = document.getElementById("marquee"); 
-	if (index == 0) {
+	const i = document.getElementById("mirror").selectedIndex;
+	if (i == 0) {
 		obj.style.transform = "scale(1,1)";
-	} else if (index == 1) {
+	} else if (i == 1) {
 		obj.style.transform = "scale(-1,1)";
 	}
-	return false;
-}, false);
+}, false); // Handle mirror changes
