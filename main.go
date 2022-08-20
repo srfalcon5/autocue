@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -39,13 +40,15 @@ func main() {
 	// TODO: rewrite storage script
 	http.HandleFunc("/storescript", func(w http.ResponseWriter, r *http.Request) {
 		// Parse incoming data
-		if r.Header.Get("Content-Type") != "application/x-www-form-urlencoded" {
+		if r.Header.Get("Content-Type") != "application/json" {
 			w.WriteHeader(http.StatusUnsupportedMediaType)
 			fmt.Fprintf(w, "Wrong content-type on request.")
 			return
 		}
-		r.ParseForm()
-		script := r.FormValue("script")
+		type DataIn struct {
+			Script string `json:"string"`
+		}
+		data := json.Unmarshal(r.Body, &DataIn)
 
 		// Store in file 
 		fname, err := nameGen()
@@ -55,7 +58,6 @@ func main() {
 			fmt.Fprintf(w, "%v", err)
 			return
 		}
-		// fname = strings.Join(fname, ".txt") // not sure what this line was for
 		f, err := os.Create(fname)
 		if err != nil {
 			w.WriteHeader(http.StatusInternalServerError)
@@ -64,7 +66,7 @@ func main() {
 			return
 		}
 		defer f.Close()
-		if err := os.WriteFile(fname, []byte(script), 0666); err != nil {
+		if err := ioutil.WriteFile(fname, []byte(script), 0666); err != nil {
 			w.WriteHeader(http.StatusInternalServerError)
 			fmt.Fprintf(w, "Something went wrong while saving the your script. Report the error below at https://github.com/doamatto/falcon5-teleprompter/issues/new")
 			fmt.Fprintf(w, "%v", err)
@@ -74,6 +76,7 @@ func main() {
 		// Strip extension to prevent confusion
 		ext := path.Ext(fname)
 		hash := fname[0:len(fname)-len(ext)]
+
 		// Return 200 with the hash for the client to finish the push
 		w.Header().Add("Prompter-Hash", hash)
 		w.WriteHeader(200)
@@ -116,6 +119,7 @@ func nameGen() (string, error) {
 	// Shuffle words in word list
 	rand.Seed(time.Now().UnixNano())
 	rand.Shuffle(len(words), func(i, j int) { words[i], words[j] = words[j], words[i] })
+	
 	// Get first three entries of shuffled array
 	gen := words[0] + words[1] + words[2]
 	
