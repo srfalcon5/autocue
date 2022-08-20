@@ -3,3 +3,4 @@ server
 .scannerwork/
 cleanup
 *.br
+scripts/
