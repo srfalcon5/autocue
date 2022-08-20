@@ -34,6 +34,24 @@ function marquee() {
 		}
 	}
 }
+function uploadScript() {
+	// Get script from page
+	const script = documet.getElementById("marquee").firstChild.innerHTML;
+
+	// Send script to server
+	const opt = {
+		method: "POST",
+		body: {"script": script},
+	}
+	fetch('/storescript', opt).then(res => res.json()).then(res => {
+		if (res.url !== null && res.url !== undefined) {
+			return res.url;
+		} else {
+			console.error("Couldn't save script to server. Try again and check server logs.");
+			return;
+		}
+	});
+}
 
 document.getElementById("toggle").addEventListener("click", () => {
 	play = !play;
