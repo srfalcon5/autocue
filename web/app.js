@@ -2,9 +2,9 @@
 
 // Configuration //
 const speeds = [
-	"256", // slow
-	"128", // normal
-	"32", // fast
+	"64", // slow
+	"32", // normal
+	"16", // fast
 ];
 const fontSizes = [
 	"1rem", // small
