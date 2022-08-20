@@ -2,12 +2,13 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"math/rand"
 	"net/http"
-	"os"
 	"strings"
+	"time"
 )
 
 func main() {
@@ -38,16 +39,15 @@ func main() {
 	})
 
 	// API endpoints
-	// TODO: rewrite storage script
 	http.HandleFunc("/scripts", func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == "GET" {
 			w.Header().Set("Allow", "GET, POST")
 			// Get script from URL
-			code := r.URL.Path[len("/script/"):]
-			file := strings.Join([]string{"scripts/", code}, "")
+			hash := r.URL.Path[len("/script/"):]
+			file := strings.Join([]string{"scripts/", hash}, "")
 
 			// Check if script exists
-			script, err := os.Open(file)
+			script, err := ioutil.ReadFile(file)
 			if err != nil {
 				w.WriteHeader(500)
 			} else {
@@ -67,7 +67,7 @@ func main() {
 
 			// Generate hash for file
 			// Loosely based on https://github.com/cyckl/uploader
-			words, err := os.Open("words.json")
+			words, err := ioutil.ReadFile("words.json")
 			if err != nil {
 				w.WriteHeader(500)
 				w.Header().Add("Prompter-Hash", "undefined")
@@ -82,10 +82,23 @@ func main() {
 			}
 			rand.Seed(time.Now().UnixNano())
 			rand.Shuffle(len(wordBank), func (i, j int) { wordBank[i], wordBank[j] = wordBank[j], wordBank[i] })
-			hash := strings.Join([]{ words[0], words[1], words[2]}, "")
+			hash := strings.Join([]string{
+				string(words[0]),
+				string(words[1]),
+				string(words[2]),
+			}, "")
 
 			// Store script in a file
-			err = ioutil.WriteFile(loc, r.Body, 0644)
+			loc := strings.Join([]string{"scripts/", hash}, "")
+			data, err := ioutil.ReadAll(r.Body)
+			if err != nil {
+				w.WriteHeader(500)
+				w.Header().Add("Prompter-Hash", "undefined")
+				fmt.Fprintf(w, "Couldn't read script from body: %v", err)
+			} else {
+				r.Body.Close()
+			}
+			err = ioutil.WriteFile(loc, data, 0644)
 			if err != nil {
 				w.WriteHeader(500)
 				w.Header().Add("Prompter-Hash", "undefined")
