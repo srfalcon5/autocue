@@ -1,44 +1,66 @@
-html,
 body {
 	background: #000;
 	color: #fff;
-	font-family: sans-serif;
+	font-family: Inter, sans-serif;
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	margin: 0;
 }
+
 a {
 	color: #fff;
 }
 a:hover { color: #FC3; }
 
-#marquee {
-	font-size: 3rem;
-	overflow-y: scroll;
-	/*overflow-y: auto;*/
-	max-height: 10rem;
-	font-family: serif;
-}
-#marquee:focus { outline: none; }
-
-#privacy { font-size: 18px; }
-#privacy,
-header,
-footer {
+/*                       */
+/*   Teleprompter text   */
+/*                       */
+main {
 	margin: 0 auto;
-	max-width: 85%;
+	padding: 3rem;
+	font-size: 5rem;
+	overflow-y: scroll;
+	flex-grow: 1;
 }
 
+main > p {
+	margin: 0;
+}
+
+main > p:focus {
+	outline: none;
+}
+
+/*              */
+/*   Controls   */
+/*              */
 footer {
-	margin-top: 1rem;
-	border-top: 1px white solid;
-	opacity: .8;
+	padding: 1rem;
+	background: #222;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+a#logo {
+	font-weight: 600;
+	text-decoration: none;
+	padding-right: 0.5rem;
 }
 
 button {
-	padding: .1rem .5rem;
-	border-radius: 6px;
-	background: #18975E;
-	font-size: 1.2rem;
-	border: 2px solid white;
-	font-weight: 700;
-	display: inline-block;
+	padding: 0.5rem 1rem;
+	border-radius: 0.25rem;
+	background: #444;
+	color: unset;
+	font-size: 1rem;
+	font-weight: 400;
+	border: none;
 }
-button:hover { background: rgba(24, 151, 94, .8); }
+button:hover { opacity: 0.7; }
+
+button#toggle {
+	background: #2B3;
+	font-weight: 600;
+}

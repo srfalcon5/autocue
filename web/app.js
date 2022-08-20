@@ -7,9 +7,9 @@ const speeds = [
 	"32", // fast
 ];
 const fontSizes = [
-	"1rem", // small
-	"3rem", // normal
-	"5rem", // large
+	"1rem", // tiny
+	"3rem", // small
+	"5rem", // normal
 ];
 const align = ["left", "center", "right"];
 
@@ -36,6 +36,17 @@ function marquee() {
 }
 
 document.getElementById("toggle").addEventListener("click", () => {
+	// Visual button state
+	if(!play) {
+		document.getElementById("toggle").innerHTML = "Stop";
+		document.getElementById("toggle").style.background = "#F34";
+	}
+	else {
+		document.getElementById("toggle").innerHTML = "Start";
+		document.getElementById("toggle").style.background = "#2B3";
+	}
+
+	// Actually start marquee
 	play = !play;
 }, false); // Handle scrolling start and stop
 

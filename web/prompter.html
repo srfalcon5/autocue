@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+	<html lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,10 +12,14 @@
 			<p contenteditable="true">
 				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 			</p>
-			<p>END</p>
+			<p><br>END</p>
 		</main>
 		<footer>
-			<div id="controls">
+			<div>
+				<a id="logo" href="/about">AutoCue</a>
+				<a href="/privacy">Privacy</a>
+			</div>
+			<div>
 				<label for="speed">Speed</label>
 				<select name="speed" id="speed">
 					<option name="slow">Slow</option>
@@ -26,8 +30,8 @@
 				<label for="size">Size</label>
 				<select name="size" id="size">
 					<option name="small">Small</option>
-					<option name="medium" selected>Normal</option>
-					<option name="large">Large</option>
+					<option name="medium">Normal</option>
+					<option name="large" selected>Large</option>
 				</select>
 
 				<label for="align">Align</label>
@@ -42,11 +46,10 @@
 					<option name="original" selected>Original</option>
 					<option name="mirror">Mirror</option>
 				</select>
-				<button id="toggle">Start/Stop</button>
 			</div>
 			<div>
-				<a href="/privacy">Privacy.</a>
+				<button>Upload</button>
+				<button id="toggle">Start</button>
 			</div>
-		</footer>
 	</body>
-</html>
+	</html>
