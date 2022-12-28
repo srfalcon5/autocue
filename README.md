@@ -1,5 +1,7 @@
 [Demo](https://f5-prompter.maatt.fr)
 
+Archived in favour of soon-to-come teleprompter.
+
 ## Building
 0. Install [Golang](https://golang.org/dl)
 1. Clone this repository (`git clone https://github.com/doamatto/f5-autocue.git`)
