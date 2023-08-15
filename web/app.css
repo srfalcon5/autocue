@@ -8,9 +8,7 @@ body {
 	margin: 0;
 }
 
-a {
-	color: #fff;
-}
+a { color: #fff; }
 a:hover { color: #FC3; }
 
 /*                       */
@@ -23,14 +21,8 @@ main {
 	overflow-y: scroll;
 	flex-grow: 1;
 }
-
-main > p {
-	margin: 0;
-}
-
-main > p:focus {
-	outline: none;
-}
+main > p { margin: 0; }
+main > p:focus { outline: none; }
 
 /*              */
 /*   Controls   */
