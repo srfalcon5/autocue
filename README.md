@@ -1,4 +1,4 @@
-[Demo](https://f5-prompter.maatt.fr)
+[Demo](https://cue.f5.maatt.fr)
 
 ## Building
 0. Install [Golang](https://golang.org/dl)
@@ -7,6 +7,4 @@
 3. Run the compiled server file (`./server`)
 
 ## Acknoledgements
-Created by [Matt Ronchetto](https://maatt.fr) and [Daniel Calderon](https://daniel.cafe) for the class of 2023 and beyond.
-
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=f5-autocue&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=f5-autocue)
+Created by [Matt Ronchetto](https://maatt.fr) and [Daniel Calderon](https://cyckl.net) for the class of 2023 and beyond.
