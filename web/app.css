@@ -21,6 +21,18 @@ main {
 	overflow-y: scroll;
 	flex-grow: 1;
 }
+header, article {
+	margin: 0 auto;
+}
+article {
+	padding: 0 3rem 3rem;
+	flex-grow: 1;
+}
+.stack { flex-direction: column; }
+hr {
+	margin: 1rem auto;
+	width: 50%;
+}
 main > p { margin: 0; }
 main > p:focus { outline: none; }
 

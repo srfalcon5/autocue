@@ -1,11 +1,7 @@
 'use strict';
 
 // Configuration //
-const speeds = [
-	"256", // slow
-	"128", // normal
-	"32", // fast
-];
+var speed = 128; // default scroll speed
 const fontSizes = [
 	"1rem", // tiny
 	"3rem", // small
@@ -18,7 +14,6 @@ const align = ["left", "center", "right"];
 const obj = document.getElementById("marquee");
 let play = false;
 let curScroll = 0;
-let speed = speeds[1];
 let scroller = setInterval(marquee, speed);
 
 function marquee() {
@@ -49,15 +44,28 @@ document.getElementById("toggle").addEventListener("click", () => {
 	// Actually start marquee
 	play = !play;
 }, false); // Handle scrolling start and stop
+document.addEventListener("wheel", (e) => {
+	if(play) {
+		e.preventDefault();
+		speed += e.deltaY * 10;
+		if (speed > 3000) { speed = 3000; }
+		if (speed < 10) { speed = 10; }
+		console.log(speed);
+		console.log("destroy scroller");
+		clearInterval(scroller);
+		scroller = setInterval(marquee, speed);
+		console.log("built scroller");
+	}
+})
 
-document.getElementById("speed").addEventListener("change", () => {
+/*document.getElementById("speed").addEventListener("change", () => {
 	const i = document.getElementById("speed").selectedIndex;
 	speed = speeds[i];
 	console.log("destroy scroller");
 	clearInterval(scroller);
 	scroller = setInterval(marquee, speed);
 	console.log("built scroller");
-}, false); // Handle speed changes
+}, false); // Handle speed changes*/
 
 document.getElementById("size").addEventListener("change", () => {
 	const i = document.getElementById("size").selectedIndex;
