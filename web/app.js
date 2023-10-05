@@ -56,7 +56,12 @@ document.addEventListener("wheel", (e) => {
 		scroller = setInterval(marquee, speed);
 		console.log("built scroller");
 	}
-})
+});
+document.getElementById("marquee_text").addEventListener("paste", (e) => {
+	e.preventDefault();
+    let text = (e.originalEvent || e).clipboardData.getData('text/plain');
+    document.getElementById("marquee_text").innerHTML(text);
+});
 
 /*document.getElementById("speed").addEventListener("change", () => {
 	const i = document.getElementById("speed").selectedIndex;
