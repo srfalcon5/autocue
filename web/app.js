@@ -1,11 +1,11 @@
 'use strict';
 
 // Configuration //
-var speed = 128; // default scroll speed
+var speed = 200; // default scroll speed
 const fontSizes = [
-	"1rem", // tiny
-	"3rem", // small
-	"5rem", // normal
+	"24px", // tiny
+	"48px", // small
+	"72px", // normal
 ];
 const align = ["left", "center", "right"];
 
@@ -14,21 +14,22 @@ const align = ["left", "center", "right"];
 const obj = document.getElementById("marquee");
 let play = false;
 let curScroll = 0;
+let curSize = 48; // script size in pixels
 let scroller = setInterval(marquee, speed);
 
 function marquee() {
-	if(play) {
-		curScroll = obj.scrollTop;
-		if (curScroll + obj.clientHeight == document.clientHeight) {
-			obj.scrollTo(0, 0);
-		} else {
-			obj.scrollTo({
-				top: curScroll + 5,
-				behavior: "smooth",
-			});
-		}
+	if(!play) { return; }
+	curScroll = obj.scrollTop;
+	if (curScroll + obj.clientHeight == document.clientHeight) {
+		obj.scrollTo(0, 0);
+	} else {
+		obj.scrollTo({
+			top: curScroll + (5000/speed),
+			behavior: "smooth",
+		});
 	}
 }
+obj.addEventListener("wheel", (e) => { if(play) { e.preventDefault(); } });
 
 document.getElementById("toggle").addEventListener("click", () => {
 	// Visual button state
@@ -45,36 +46,34 @@ document.getElementById("toggle").addEventListener("click", () => {
 	play = !play;
 }, false); // Handle scrolling start and stop
 document.addEventListener("wheel", (e) => {
-	if(play) {
-		e.preventDefault();
-		speed += e.deltaY * 10;
-		if (speed > 3000) { speed = 3000; }
-		if (speed < 10) { speed = 10; }
-		console.log(speed);
-		console.log("destroy scroller");
-		clearInterval(scroller);
-		scroller = setInterval(marquee, speed);
-		console.log("built scroller");
-	}
-});
-document.getElementById("marquee_text").addEventListener("paste", (e) => {
+	if(!play) { return }
 	e.preventDefault();
-    let text = (e.originalEvent || e).clipboardData.getData('text/plain');
-    document.getElementById("marquee_text").innerHTML(text);
-});
-
-/*document.getElementById("speed").addEventListener("change", () => {
-	const i = document.getElementById("speed").selectedIndex;
-	speed = speeds[i];
+	if (e.deltaY) {
+		speed += curSize*0.25;
+	} else {
+		speed -= curSize*0.25;
+	}
+	//speed += e.deltaY * 10;
+	if (speed > 3000) { speed = 3000; }
+	if (speed < 5) { speed = 5; }
+	console.log(e.deltaY);
+	console.log(speed);
 	console.log("destroy scroller");
 	clearInterval(scroller);
 	scroller = setInterval(marquee, speed);
 	console.log("built scroller");
-}, false); // Handle speed changes*/
+});
+document.getElementById("marquee_text").addEventListener("paste", (e) => {
+	e.preventDefault();
+    let text = (e.originalEvent || e).clipboardData.getData('text/plain');
+    console.log(text);
+    document.execCommand("insertHTML", false, text);
+});
 
 document.getElementById("size").addEventListener("change", () => {
 	const i = document.getElementById("size").selectedIndex;
 	obj.style.fontSize = fontSizes[i];
+	curSize = fontSizes[i].replace("px", "");
 }, false); // Handle text size changes
 
 document.getElementById("align").addEventListener("change", () => {
