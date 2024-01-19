@@ -11,7 +11,7 @@ cue.f5.maatt.fr {
 	header Cache-Control "max-age=31536000"
 
 	# Replace with reverse proxy when Go app is ready
-	root * /srv/apps/caddy/sites/f5-autocue/web
+	root * /home/git/cue.f5.maatt.fr
 	redir / /prompter.html 302
 	redir /privacy /privacy.html 302
 	file_server {
